@@ -15,6 +15,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@coleqiu/vue-drag-select": "^2.0.3",
     "pinia": "^2.0.35",
     "uuid": "^9.0.0",
     "vue": "^3.3.4"
