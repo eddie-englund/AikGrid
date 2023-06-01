@@ -36,7 +36,7 @@ describe('AikGird', () => {
     expect(wrapper.findAll('.aik-row').length).toBe(2);
   });
 
-  it('has a header-click event which returns the column', async () => {
+  it('has a headerClick event which returns the column', async () => {
     const wrapper = mount(AikGrid, {
       props: {
         columns: FourRowsFourCols.columns,
@@ -46,12 +46,12 @@ describe('AikGird', () => {
 
     await wrapper.find('.aik-header-cell-item').trigger('click');
 
-    expect(wrapper.emitted()['header-click'][0][0]).toMatchObject(
+    expect(wrapper.emitted()['headerClick'][0][0]).toMatchObject(
       FourRowsFourCols.columns[0],
     );
   });
 
-  it('has a cell-click event which returns the column pressed and the index of the row', async () => {
+  it('has a cellClick event which returns the column pressed and the index of the row', async () => {
     const wrapper = mount(AikGrid, {
       props: {
         columns: FourRowsFourCols.columns,
@@ -61,7 +61,7 @@ describe('AikGird', () => {
 
     await wrapper.find('.aik-cell-item').trigger('click');
 
-    const evt = wrapper.emitted()['cell-click'][0];
+    const evt = wrapper.emitted()['cellClick'][0];
 
     // First arg should be the column def
     expect(evt[0]).toMatchObject(FourRowsFourCols.columns[0]);
@@ -84,8 +84,8 @@ describe('AikGird', () => {
     await wrapper.find('.aik-cell-item').trigger('click');
     await wrapper.find('.aik-cell-item').trigger('click');
 
-    const evt = wrapper.emitted()['cell-click'][0];
-    const evt2 = wrapper.emitted()['cell-click'][1];
+    const evt = wrapper.emitted()['cellClick'][0];
+    const evt2 = wrapper.emitted()['cellClick'][1];
 
     expect(evt).toMatchObject(evt2);
   });
@@ -101,8 +101,8 @@ describe('AikGird', () => {
     await wrapper.find('.aik-header-cell-item').trigger('click');
     await wrapper.find('.aik-header-cell-item').trigger('click');
 
-    const evt = wrapper.emitted()['header-click'][0];
-    const evt2 = wrapper.emitted()['header-click'][1];
+    const evt = wrapper.emitted()['headerClick'][0];
+    const evt2 = wrapper.emitted()['headerClick'][1];
 
     expect(evt).toMatchObject(evt2);
   });
