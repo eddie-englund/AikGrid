@@ -25,9 +25,7 @@ jobs:
       run: pnpm test:unit
     - name: 'Build package'
       run: pnpm build
-    - name: 'Npm ci'
-      run: npm ci
     - name: 'Publish to npm'
-      run: npm publish
+      run: pnpm publish
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
