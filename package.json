@@ -1,6 +1,6 @@
 {
   "name": "aikgrid",
-  "version": "0.0.8",
+  "version": "0.0.85",
   "types": "./dist/aik-grid.d.ts",
   "files": [
     "dist"
@@ -12,7 +12,7 @@
       "import": "./dist/aik-grid.js",
       "require": "./dist/aik-grid.umd.cjs"
     },
-    "./dist/index.css": {
+    "./dist/style.css": {
       "import": "./dist/style.css",
       "require": "./dist/style.css"
     }
