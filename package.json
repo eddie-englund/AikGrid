@@ -1,7 +1,6 @@
 {
   "name": "aikgrid",
   "version": "0.0.0",
-  "private": true,
   "types": "./dist/aik-grid.d.ts",
   "files": ["dist"],
   "main": "./dist/aik-grid.cjs",
