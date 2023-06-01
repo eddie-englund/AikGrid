@@ -2,13 +2,19 @@
   "name": "aikgrid",
   "version": "0.0.0",
   "types": "./dist/aik-grid.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "main": "./dist/aik-grid.cjs",
   "module": "./dist/aik-grid.js",
   "exports": {
     ".": {
       "import": "./dist/aik-grid.js",
       "require": "./dist/aik-grid.umd.cjs"
+    },
+    "./dist/index.css": {
+      "import": "./dist/index.css",
+      "require": "./dist/index.css"
     }
   },
   "type": "module",
