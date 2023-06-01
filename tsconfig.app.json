@@ -4,8 +4,7 @@
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
     "composite": true,
-    "skipLibCheck": true,
-    "skipDefaultLibCheck": true,
+    "declaration": true,
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]

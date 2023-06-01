@@ -1,9 +1,9 @@
 <script setup lang="ts">
 // TODO: Add generics when Volar adds support
-import type { Column } from '@/utils/column';
+import type { Column } from './main';
 import { v4 as uuid } from 'uuid';
 import { ref, watch } from 'vue';
-// @ts-ignore
+// @ts-ignore doesn't provide any types :(
 import { DragSelect, DragSelectOption } from '@coleqiu/vue-drag-select';
 
 const { rows, columns } = defineProps<{
@@ -11,17 +11,33 @@ const { rows, columns } = defineProps<{
   rows: any[];
 }>();
 
+interface DragSelectEmit {
+  columnId: string;
+  rowIndex: number;
+}
+
 const emit = defineEmits<{
-  (e: 'header-click', column: Column<any>): void;
-  (e: 'cell-click', column: Column<any>, row: any[], rowIndex: number): void;
-  (e: 'select:update', columns: Column<any>, rowIndex: number): void;
+  cellClick: [column: Column<any>, row: any[], rowIndex: number];
+  dragSelect: [values: DragSelectEmit[]];
+  headerClick: [column: Column<any>];
 }>();
 
 const defaultWidth = (width?: string): string => width ?? '6rem';
-const selection = ref([]);
+const selection = ref<string[]>([]);
 // we give the grid a unique id to allow for multiple
 // instances of the grid to live at the same time
 const gridId = uuid();
+
+watch(selection, () => {
+  const values: DragSelectEmit[] = selection.value.map(e => {
+    const res = e.split(' ');
+    return {
+      columnId: res[0],
+      rowIndex: parseInt(res[1]),
+    };
+  });
+  return emit('dragSelect', values);
+});
 </script>
 
 <template>
@@ -33,9 +49,13 @@ const gridId = uuid();
         class="aik-header-cell"
         :class="`aik-header-cell-${column.id}`"
         :style="`width: ${defaultWidth(column.width)}`"
-        @click="emit(`header-click`, column)"
+        @click="emit('headerClick', column)"
       >
-        <component :is="column.headerTemplate" v-if="column.headerTemplate" />
+        <component
+          :is="column.headerTemplate"
+          v-if="column.headerTemplate"
+          :column="column"
+        />
         <h3 v-else>{{ column.name }}</h3>
       </div>
     </header>
@@ -52,8 +72,8 @@ const gridId = uuid();
           class="aik-cell"
           :class="`aik-cell-${column.id}`"
           :style="`width: ${defaultWidth(column.width)}`"
-          :value="column.id + index"
-          @click="emit('cell-click', column, row, index)"
+          :value="`${column.id.trim()} ${index}`"
+          @click="emit('cellClick', column, row, index)"
         >
           <component
             :is="column.cellTemplate"

@@ -1,4 +1,4 @@
-import { Column } from './../src/utils/column';
+import type { Column } from './../src/main';
 
 interface ColRow {
   columns: Column<string>[];

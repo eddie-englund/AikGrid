@@ -12,12 +12,11 @@ module.exports = {
   plugins: ['prettier', '@typescript-eslint'],
   parserOptions: {
     ecmaVersion: 'latest',
-    'vue/no-setup-props-destructure': 'off',
     parser: '@typescript-eslint/parser',
   },
   rules: {
     'prettier/prettier': 'error',
-    'vue/no-setup-props-destructure': 'off',
-    'no-unused-vars': 'off',
+    'vue/no-setup-props-destructure': 'off', // doesn't support vue 3.3 yet
+    'vue/require-explicit-emits': 'off', // has partial support for vue 3.3 but is wanky as hell
   },
 };
