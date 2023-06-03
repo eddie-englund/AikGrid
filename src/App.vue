@@ -58,7 +58,6 @@ watch(selection, () => {
       v-model="selection"
       class="aik-body"
       selected-option-class="aik-cell--selected"
-      :selected-option-style="{ background: 'red' }"
     >
       <div v-for="(row, index) in rows" :key="index" class="aik-row">
         <drag-select-option

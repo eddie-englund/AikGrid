@@ -9,15 +9,15 @@ import dts from 'vite-plugin-dts';
 export default defineConfig({
   plugins: [
     vue(),
-    dts({
-      insertTypesEntry: true,
-      tsConfigFilePath: './tsconfig.json',
-      compilerOptions: {
-        paths: {
-          '@/*': ['./src/*'],
-        },
-      },
-    }),
+    // dts({
+    //   insertTypesEntry: true,
+    //   tsConfigFilePath: './tsconfig.json',
+    //   compilerOptions: {
+    //     paths: {
+    //       '@/*': ['./src/*'],
+    //     },
+    //   },
+    // }),
   ],
   resolve: {
     alias: {

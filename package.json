@@ -1,6 +1,6 @@
 {
   "name": "aikgrid",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "types": "./dist/aik-grid.d.ts",
   "files": [
     "dist"
@@ -20,7 +20,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "run-p type-check build-only",
+    "build": "vite build && vue-tsc --project ./tsconfig.app.json --declaration --emitDeclarationOnly",
+    "build:types": "vue-tsc --project ./tsconfig.app.json --declaration --emitDeclarationOnly ",
     "preview": "vite preview",
     "test:unit": "vitest",
     "test:unit-api": "vitest $1",
