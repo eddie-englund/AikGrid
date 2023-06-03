@@ -15,13 +15,24 @@ export interface CellClickProps<PropT> {
   row: any[];
 }
 
-export interface Column<PropT> extends Record<string, any> {
+export interface Column<PropT> extends Record<string, unknown> {
   name: string;
   id: string;
   prop: PropT | ((row: Column<PropT>) => PropT);
   headerTemplate?: Component<HeaderClickProps<PropT>>;
   cellTemplate?: Component<CellClickProps<PropT>>;
   width?: string;
+}
+
+export interface DragSelectEmit {
+  columnId: string;
+  rowIndex: number;
+}
+
+export interface CellClickEmit {
+  column: Column<any>;
+  row: Record<string, any>;
+  rowIndex: number;
 }
 
 export default AikGrid;
@@ -33,6 +44,7 @@ export const AiKGridPlugin = {
     if (!installed) return;
     installed = true;
     app.use(VueDragSelect);
-    app.component('AikGrid', AikGrid);
+    // eslint-disable-next-line vue/component-definition-name-casing
+    app.component('aik-grid', AikGrid);
   },
 };

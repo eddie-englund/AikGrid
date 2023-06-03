@@ -18,5 +18,6 @@ module.exports = {
     'prettier/prettier': 'error',
     'vue/no-setup-props-destructure': 'off', // doesn't support vue 3.3 yet
     'vue/require-explicit-emits': 'off', // has partial support for vue 3.3 but is wanky as hell
+    'no-unused-vars': 'off',
   },
 };

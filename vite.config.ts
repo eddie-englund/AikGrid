@@ -11,6 +11,7 @@ export default defineConfig({
     vue(),
     dts({
       insertTypesEntry: true,
+      tsConfigFilePath: './tsconfig.json',
       compilerOptions: {
         paths: {
           '@/*': ['./src/*'],
@@ -24,6 +25,7 @@ export default defineConfig({
     },
   },
   build: {
+    sourcemap: true,
     lib: {
       entry: path.resolve(__dirname, 'src/main.ts'),
       name: 'AikGrid',

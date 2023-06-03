@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // TODO: Add generics when Volar adds support
-import type { Column } from './main';
+import type { Column, CellClickEmit, DragSelectEmit } from './main';
 import { v4 as uuid } from 'uuid';
 import { ref, watch } from 'vue';
 // @ts-ignore doesn't provide any types :(
@@ -8,18 +8,13 @@ import { DragSelect, DragSelectOption } from '@coleqiu/vue-drag-select';
 
 const { rows, columns } = defineProps<{
   columns: Column<any>[];
-  rows: any[];
+  rows: Record<string, any>[];
 }>();
 
-interface DragSelectEmit {
-  columnId: string;
-  rowIndex: number;
-}
-
 const emit = defineEmits<{
-  cellClick: [column: Column<any>, row: any[], rowIndex: number];
-  dragSelect: [values: DragSelectEmit[]];
-  headerClick: [column: Column<any>];
+  (e: 'cellClick', evt: CellClickEmit): void;
+  (e: 'dragSelectUpdate', values: DragSelectEmit[]): void;
+  (e: 'headerClick', column: Column<unknown>): void;
 }>();
 
 const defaultWidth = (width?: string): string => width ?? '6rem';
@@ -36,7 +31,7 @@ watch(selection, () => {
       rowIndex: parseInt(res[1]),
     };
   });
-  return emit('dragSelect', values);
+  return emit('drag-select:update', values);
 });
 </script>
 
@@ -73,7 +68,7 @@ watch(selection, () => {
           :class="`aik-cell-${column.id}`"
           :style="`width: ${defaultWidth(column.width)}`"
           :value="`${column.id.trim()} ${index}`"
-          @click="emit('cellClick', column, row, index)"
+          @click="emit('cellClick', { column, row, rowIndex: index })"
         >
           <component
             :is="column.cellTemplate"
