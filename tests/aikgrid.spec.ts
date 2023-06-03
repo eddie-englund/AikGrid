@@ -63,14 +63,11 @@ describe('AikGird', () => {
 
     const evt = wrapper.emitted()['cellClick'][0];
 
-    // First arg should be the column def
-    expect(evt[0]).toMatchObject(FourRowsFourCols.columns[0]);
-
-    // Second arg should be the row itself
-    expect(evt[1]).toMatchObject(FourRowsFourCols.rows[0]);
-
-    // Third arg should be the index of the row
-    expect(evt[2]).toBe(0);
+    expect(evt[0]).toMatchObject({
+      column: FourRowsFourCols.columns[0],
+      row: FourRowsFourCols.rows[0],
+      rowIndex: 0,
+    });
   });
 
   it('Clicking the same cell twice should result in the same return values', async () => {
