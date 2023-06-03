@@ -31,7 +31,7 @@ watch(selection, () => {
       rowIndex: parseInt(res[1]),
     };
   });
-  return emit('drag-select:update', values);
+  return emit('dragSelectUpdate', values);
 });
 </script>
 
