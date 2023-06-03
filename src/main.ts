@@ -24,8 +24,14 @@ export interface Column<PropT> extends Record<string, any> {
   width?: string;
 }
 
-export default {
+export default AikGrid;
+
+let installed = false;
+
+export const AiKGridPlugin = {
   install: (app: App) => {
+    if (!installed) return;
+    installed = true;
     app.use(VueDragSelect);
     app.component('AikGrid', AikGrid);
   },
