@@ -1,4 +1,4 @@
-name: Build and publish to npmjs
+name: Build
 on:
   - push
 
