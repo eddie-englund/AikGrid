@@ -1,15 +1,13 @@
 {
   "name": "aikgrid",
-  "version": "0.2.5",
-  "types": "./dist/aik-grid.d.ts",
-  "files": [
-    "dist"
-  ],
+  "version": "0.2.6",
+  "types": "./dist/main.d.ts",
+  "files": ["dist"],
   "main": "./dist/aik-grid.cjs",
-  "module": "./dist/aik-grid.js",
+  "module": "./dist/aik-grid.es.js",
   "exports": {
     ".": {
-      "import": "./dist/aik-grid.js",
+      "import": "./dist/aik-grid.es.js",
       "require": "./dist/aik-grid.umd.cjs"
     },
     "./dist/style.css": {
@@ -20,7 +18,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && pnpm build:types && pnpm rename",
+    "build": "vite build && pnpm build:types",
     "build:types": "vue-tsc  --skipLibCheck --skipDefaultLibCheck --project ./tsconfig.build.json --declaration --emitDeclarationOnly --outDir dist/",
     "preview": "vite preview",
     "rename": "renamer --find main.d.ts --replace aik-grid.d.ts ./dist/*",

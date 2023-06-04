@@ -18,7 +18,7 @@ export default defineConfig({
     outDir: './dist',
     lib: {
       entry: path.resolve(__dirname, 'src/main.ts'),
-      name: 'aikgrid',
+      name: 'AikGrid',
       fileName: fmt => `aik-grid.${fmt}.js`,
       formats: ['cjs', 'es', 'iife', 'umd'],
     },
