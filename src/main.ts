@@ -35,11 +35,9 @@ export interface CellClickEmit {
   rowIndex: number;
 }
 
-export default AikGrid;
-
 let installed = false;
 
-export const AiKGridPlugin = {
+export default {
   install: (app: App) => {
     if (!installed) return;
     installed = true;
