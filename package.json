@@ -1,7 +1,7 @@
 {
   "name": "aikgrid",
   "version": "0.2.4",
-  "types": "./dist/main.d.ts",
+  "types": "./dist/aik-grid.d.ts",
   "files": [
     "dist"
   ],
