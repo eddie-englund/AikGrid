@@ -39,12 +39,14 @@ let installed = false;
 
 export { AikGrid };
 
-export default {
-  install: (app: App) => {
-    if (!installed) return;
-    installed = true;
-    app.use(VueDragSelect);
-    // eslint-disable-next-line vue/component-definition-name-casing
-    app.component('aik-grid', AikGrid);
-  },
+const install = (app: App) => {
+  if (!installed) return;
+  installed = true;
+  app.use(VueDragSelect);
+  // eslint-disable-next-line vue/component-definition-name-casing
+  app.component('aik-grid', AikGrid);
 };
+
+AikGrid.install = install;
+
+export default AikGrid;
