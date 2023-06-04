@@ -2,9 +2,10 @@
 // TODO: Add generics when Volar adds support
 import type { Column, CellClickEmit, DragSelectEmit } from './main';
 import { v4 as uuid } from 'uuid';
-import { ref, watch } from 'vue';
+import { ref, type Ref, watch } from 'vue';
 // @ts-ignore doesn't provide any types :(
-import { DragSelect, DragSelectOption } from '@coleqiu/vue-drag-select';
+import { DragSelectOption } from '@coleqiu/vue-drag-select';
+import DragSelect from './components/DragSelect.vue';
 
 const { rows, columns } = defineProps<{
   columns: Column<any>[];
@@ -54,11 +55,8 @@ watch(selection, () => {
         <h3 v-else>{{ column.name }}</h3>
       </div>
     </header>
-    <drag-select
-      v-model="selection"
-      class="aik-body"
-      selected-option-class="aik-cell--selected"
-    >
+    <!-- eslint-disable-next-line vue/valid-v-model -->
+    <drag-select v-model="selection">
       <div v-for="(row, index) in rows" :key="index" class="aik-row">
         <drag-select-option
           v-for="column in columns"

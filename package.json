@@ -20,7 +20,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && vue-tsc --project ./tsconfig.app.json --declaration --emitDeclarationOnly",
+    "build": "vite build && vue-tsc  --skipLibCheck --skipDefaultLibCheck --project ./tsconfig.build.json --declaration --emitDeclarationOnly --outDir dist/",
     "build:types": "vue-tsc --project ./tsconfig.app.json --declaration --emitDeclarationOnly ",
     "preview": "vite preview",
     "test:unit": "vitest",

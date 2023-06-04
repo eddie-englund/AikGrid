@@ -25,17 +25,17 @@ export default defineConfig({
     },
   },
   build: {
-    sourcemap: true,
+    outDir: './dist',
     lib: {
       entry: path.resolve(__dirname, 'src/main.ts'),
-      name: 'AikGrid',
-      fileName: 'aik-grid',
+      name: 'aikgrid',
+      fileName: fmt => `aik-grid.${fmt}.js`,
       formats: ['cjs', 'es', 'iife', 'umd'],
     },
     rollupOptions: {
       external: ['vue'],
       output: {
-        globals: { vue: 'vue' },
+        globals: { vue: 'Vue' },
       },
     },
   },
