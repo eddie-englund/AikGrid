@@ -4,6 +4,7 @@
   "exclude": ["node_modules/**/*", "**/*.cy.ts", "**/*.spec.ts", "**/__tests__/**/*"],
   "compilerOptions": {
     "skipLibCheck": true,
-    "skipDefaultLibCheck": true
+    "skipDefaultLibCheck": true,
+    "declaration": true
   }
 }

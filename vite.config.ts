@@ -4,21 +4,11 @@ import path from 'node:path';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import dts from 'vite-plugin-dts';
+import typescript2 from 'rollup-plugin-typescript2';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    vue(),
-    // dts({
-    //   insertTypesEntry: true,
-    //   tsConfigFilePath: './tsconfig.json',
-    //   compilerOptions: {
-    //     paths: {
-    //       '@/*': ['./src/*'],
-    //     },
-    //   },
-    // }),
-  ],
+  plugins: [vue()],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
@@ -35,6 +25,7 @@ export default defineConfig({
     rollupOptions: {
       external: ['vue'],
       output: {
+        sourcemap: false,
         globals: { vue: 'Vue' },
       },
     },

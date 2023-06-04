@@ -18,6 +18,9 @@ devDependencies:
   '@playwright/test':
     specifier: ^1.33.0
     version: 1.33.0
+  '@rollup/plugin-typescript':
+    specifier: ^11.1.1
+    version: 11.1.1(rollup@3.21.6)(tslib@2.5.3)(typescript@5.0.4)
   '@rushstack/eslint-patch':
     specifier: ^1.2.0
     version: 1.2.0
@@ -72,6 +75,9 @@ devDependencies:
   sass:
     specifier: ^1.62.1
     version: 1.62.1
+  tslib:
+    specifier: ^2.5.3
+    version: 2.5.3
   typescript:
     specifier: ~5.0.4
     version: 5.0.4
@@ -456,6 +462,26 @@ packages:
 
   /@polka/url@1.0.0-next.21:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
+    dev: true
+
+  /@rollup/plugin-typescript@11.1.1(rollup@3.21.6)(tslib@2.5.3)(typescript@5.0.4):
+    resolution: {integrity: sha512-Ioir+x5Bejv72Lx2Zbz3/qGg7tvGbxQZALCLoJaGrkNXak/19+vKgKYJYM3i/fJxvsb23I9FuFQ8CUBEfsmBRg==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      rollup: ^2.14.0||^3.0.0
+      tslib: '*'
+      typescript: '>=3.7.0'
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+      tslib:
+        optional: true
+    dependencies:
+      '@rollup/pluginutils': 5.0.2(rollup@3.21.6)
+      resolve: 1.22.2
+      rollup: 3.21.6
+      tslib: 2.5.3
+      typescript: 5.0.4
     dev: true
 
   /@rollup/pluginutils@4.2.1:

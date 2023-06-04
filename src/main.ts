@@ -37,6 +37,8 @@ export interface CellClickEmit {
 
 let installed = false;
 
+export { AikGrid };
+
 export default {
   install: (app: App) => {
     if (!installed) return;
