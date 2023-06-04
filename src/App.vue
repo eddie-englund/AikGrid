@@ -133,8 +133,4 @@ watch(selection, () => {
     }
   }
 }
-
-.drag-select-option--selected {
-  border: 1px solid red;
-}
 </style>

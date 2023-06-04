@@ -1,14 +1,20 @@
 {
   "name": "aikgrid",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "types": "./dist/main.d.ts",
   "files": ["dist"],
   "main": "./dist/aik-grid.cjs",
   "module": "./dist/aik-grid.es.js",
   "exports": {
     ".": {
-      "import": "./dist/aik-grid.es.js",
-      "require": "./dist/aik-grid.umd.cjs"
+      "import": {
+        "default": "./dist/aik-grid.es.js",
+        "types": "./dist/main.d.ts"
+      },
+      "require": {
+        "default": "./dist/aik-grid.umd.cjs",
+        "types": "./dist/main.d.ts"
+      }
     },
     "./dist/style.css": {
       "import": "./dist/style.css",
