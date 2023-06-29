@@ -28,7 +28,7 @@ jobs:
         with:
           node-version: 18
           cache: yarn
-          cache-dependency-path: client/yarn.lock
+          cache-dependency-path: yarn.lock
           registry-url: "https://registry.yarnpkg.com"
 
       - name: Install dependencies
