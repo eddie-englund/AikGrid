@@ -14,6 +14,7 @@ jobs:
           cache-dependency-path: '**/yarn.lock'
 
       - run: yarn set version 3.5.1
+      - run: yarn config set cache-folder ~/.cache/yarn
       - run: yarn install --immutable --immutable-cache
 
       - name: Run unit tests
