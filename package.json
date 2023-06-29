@@ -2,7 +2,9 @@
   "name": "aikgrid",
   "version": "0.2.7",
   "types": "./dist/main.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "main": "./dist/aik-grid.cjs",
   "module": "./dist/aik-grid.es.js",
   "exports": {
@@ -24,7 +26,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && npm build:types",
+    "build": "vite build && npm run build:types",
     "build:types": "vue-tsc  --skipLibCheck --skipDefaultLibCheck --project ./tsconfig.build.json --declaration --emitDeclarationOnly --outDir dist/",
     "preview": "vite preview",
     "rename": "renamer --find main.d.ts --replace aik-grid.d.ts ./dist/*",
