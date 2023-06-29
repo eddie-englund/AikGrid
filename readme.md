@@ -118,3 +118,5 @@ DragSelectEmit {
 }[]
 ```
 Could not find a declaration file for module 'aikgrid'. 'C:/Users/Titus/code/aikgrid-test/node_modules/.pnpm/aikgrid@0.2.6_typescript@5.0.4/node_modules/aikgrid/dist/aik-grid.es.js' implicitly has an 'any' type. There are types at 'c:/Users/Titus/code/aikgrid-test/, but this result could not be resolved when respecting package.json "exports". The 'aikgrid' library may need to update its package.json or typings.
+
+We now have yarn!
