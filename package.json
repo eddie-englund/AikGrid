@@ -24,7 +24,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && pnpm build:types",
+    "build": "vite build && npm build:types",
     "build:types": "vue-tsc  --skipLibCheck --skipDefaultLibCheck --project ./tsconfig.build.json --declaration --emitDeclarationOnly --outDir dist/",
     "preview": "vite preview",
     "rename": "renamer --find main.d.ts --replace aik-grid.d.ts ./dist/*",
