@@ -10,15 +10,16 @@ jobs:
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
-        run: echo "dir=$(cd client && yarn config get cacheFolder)" >> $GITHUB_ENV
-
-      - name: Cache Dependencies
+        run: echo "dir=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
+        shell: bash
+        working-directory: js
+      - name: Restore yarn cache
         uses: actions/cache@v3
         with:
-          path: ${{ env.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: yarn-cache-folder-${{ hashFiles('**/yarn.lock', '.yarnrc.yml') }}
           restore-keys: |
-            ${{ runner.os }}-yarn-
+            yarn-cache-folder-
 
       - name: Setup Node.js and Yarn
         uses: actions/setup-node@v3
