@@ -4,42 +4,20 @@ on:
 jobs:
   build:
     runs-on: ubuntu-20.04
-    strategy:
-      matrix:
-        node-version: [18]
-
     steps:
-    - uses: actions/checkout@v3
-    - uses: pnpm/action-setup@v2
-      with:
-        version: 7
-        run_install: false
+      - uses: actions/checkout@v3
+      - name: Use Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: yarn
+          cache-dependency-path: '**/yarn.lock'
 
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        registry-url: 'https://registry.npmjs.org'
-        node-version: ${{ matrix.node-version }}
+      - name: Install dependencies
+        run: yarn install --immutable --frozen-lockfile
 
-    - name: Get pnpm store directory
-      id: pnpm-cache
-      shell: bash
-      run: |
-        echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - name: Run unit tests
+        run: yarn test:unit
 
-    - uses: actions/cache@v3
-      name: Setup pnpm cache
-      with:
-        path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-        restore-keys: |
-          ${{ runner.os }}-pnpm-store-
-
-    - name: Install dependencies
-      run: pnpm install
-
-    - name: Run unit tests
-      run: pnpm test:unit
-
-    - name: 'Build package'
-      run: pnpm build
+      - name: Build project
+        run: yarn build
